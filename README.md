@@ -21,7 +21,7 @@ Personal Expense Tracker is a modern web application to track, manage, and optim
 ## 🛠 Tech Stack
 - **Backend:** Node.js, Express / Motia-style configuration
 - **Frontend:** Angular + Chart.js / ngx-charts
-- **Database:** PostgreSQL
+- **Database:** MYSQL
 - **Email Service:** Nodemailer / SendGrid / SES
 - **Scheduler:** node-cron / bullmq
 
