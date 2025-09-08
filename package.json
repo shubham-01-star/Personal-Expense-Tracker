@@ -1,0 +1,39 @@
+{
+  "name": ".",
+  "description": "",
+  "scripts": {
+    "postinstall": "motia install",
+    "dev": "motia dev",
+    "dev:debug": "motia dev --verbose",
+    "generate-types": "motia generate-types",
+    "build": "motia build",
+    "clean": "rm -rf dist node_modules python_modules .motia .mermaid",
+    "sync:schema": "ts-node ./node_modules/typeorm/cli.js schema:sync -d src/ormconfig.ts"
+  },
+  "keywords": [
+    "motia"
+  ],
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.1",
+    "exceljs": "^4.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^3.0.2",
+    "motia": "^0.6.1-beta.124",
+    "mysql2": "^3.14.4",
+    "nodemailer": "^7.0.6",
+    "reflect-metadata": "^0.2.2",
+    "sib-api-v3-sdk": "^8.5.0",
+    "typeorm": "^0.3.26",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/exceljs": "^0.5.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.3.0",
+    "@types/nodemailer": "^7.0.1",
+    "@types/react": "^18.3.18",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

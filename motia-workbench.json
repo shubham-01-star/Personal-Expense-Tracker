@@ -1,0 +1,11 @@
+[
+  {
+    "id": "expense-tracker",
+    "config": {
+      "steps\\notification.step.ts": {
+        "x": 175,
+        "y": -42
+      }
+    }
+  }
+]
