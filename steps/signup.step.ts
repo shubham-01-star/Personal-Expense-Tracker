@@ -2,6 +2,7 @@ import { ApiRouteConfig, Handlers } from "motia";
 import { z } from "zod";
 import { dbInit } from "../src/bootstrap";
 import { User } from "../src/models/User";
+import { generateOTP } from "../src/utils/otp.util"
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -10,7 +11,7 @@ export const config: ApiRouteConfig = {
     name: "signup",
     description: "Register a new user",
     method: "POST",
-    
+    flows: ['expense-tracker'],
     path: "/signup",
 
     bodySchema: z.object({
@@ -33,7 +34,7 @@ export const config: ApiRouteConfig = {
         500: z.object({ message: z.string(), error: z.string() }),
     },
 
-    emits: ["user.signedup", "notification"],
+    emits: ["user.signedup", "send_otp"],
 };
 
 export const handler: Handlers["signup"] = async (req, { logger, emit }) => {
@@ -57,10 +58,15 @@ export const handler: Handlers["signup"] = async (req, { logger, emit }) => {
 
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
+        const otp = generateOTP(6);
+        const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
+
 
         // Create new user
         const newUser = userRepo.create({
             name,
+            otp,
+            otpExpiresAt : otpExpiry,
             email,
             password: hashedPassword,
             monthly_budget: monthly_budget ?? 0,
@@ -82,11 +88,11 @@ export const handler: Handlers["signup"] = async (req, { logger, emit }) => {
         );
 
         emit?.({
-            topic: "notification",
+            topic: "send_otp",
             data: {
-                templateId: "welcome-email",
+                templateId: "Otp-send",
                 email: savedUser.email,
-                templateData: { name: savedUser.name },
+                templateData: { name: savedUser.name, otp:savedUser.otp },
             },
         });
         console.log("Emitted welcome email notification");
