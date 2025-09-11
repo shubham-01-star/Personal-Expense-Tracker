@@ -15,6 +15,7 @@ export const config: ApiRouteConfig = {
   method: "POST",
   path: "/verify-otp",
   flows: ['expense-tracker'],
+  description: 'verify otp',
   bodySchema: z.object({
     email: z.string().email(),
     otp: z.string(),

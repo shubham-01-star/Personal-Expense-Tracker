@@ -271,17 +271,9 @@ declare module "motia" {
 
     'SendReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
 
-    'DailyEmailCron': CronHandler<never>
+    'SendMorningReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
 
-    'DailyReminderJob': CronHandler<void, {
-      emits: {
-        SendOTP: {
-          templateId: string
-          email: string
-          templateData: Record<string, any>
-        }
-      }
-    }>
+    'DailyEmailCron': CronHandler<never>
 
 
     'Notification': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>

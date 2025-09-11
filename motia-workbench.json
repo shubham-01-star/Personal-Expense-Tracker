@@ -2,29 +2,37 @@
   {
     "id": "expense-tracker",
     "config": {
-      "steps\\crons\\daily-reminder.step.ts": {
-        "x": 495,
-        "y": 19
-      },
       "steps\\apis\\verify-otp.step.ts": {
-        "x": -594,
+        "x": -252,
         "y": 1
       },
       "steps\\apis\\signup.step.ts": {
-        "x": -195,
-        "y": 200
+        "x": -537,
+        "y": 12
       },
       "steps\\apis\\sendotp.step.ts": {
-        "x": -607,
-        "y": 187
+        "x": -546,
+        "y": 251
       },
       "steps\\apis\\notification.step.ts": {
-        "x": -258,
-        "y": 17
+        "x": -300,
+        "y": 275
       },
       "steps\\crons\\daily-reminder-cron.step.ts": {
         "x": 46,
         "y": -14
+      },
+      "steps\\crons\\missed-expense-yesterday.step.ts": {
+        "x": 447,
+        "y": -10
+      },
+      "steps\\crons\\send-morning-reminder.step.ts": {
+        "x": 467,
+        "y": 250
+      },
+      "steps\\crons\\daily-evening-reminder.step.ts": {
+        "x": 68,
+        "y": 260
       }
     }
   }

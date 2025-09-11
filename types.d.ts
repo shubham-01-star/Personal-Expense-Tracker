@@ -12,7 +12,6 @@ declare module 'motia' {
   }
 
   interface Handlers {
-    'SendReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
     'verifyOtp': ApiRouteHandler<{ email: string; otp: string }, unknown, { topic: 'notification'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
     'signup': ApiRouteHandler<{ name: string; email: string; password: string; monthly_budget?: number }, ApiResponse<200, { user: { id: number; name: string; email: string } }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, { topic: 'send_otp'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
     'monthly-budget-update': ApiRouteHandler<{ userId: number; amount: number; action?: 'POST' | 'GET' }, ApiResponse<200, { message: string; overallBudget: { amount: number } }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, never>
@@ -28,5 +27,8 @@ declare module 'motia' {
     'expense-add': ApiRouteHandler<{ userId: number; amount: number; category: string; description?: string; date?: string }, ApiResponse<200, { id: number; amount: number; category: string; description?: string; date: string }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, never>
     'db-test': ApiRouteHandler<Record<string, unknown>, unknown, never>
     'DailyReminderJob': CronHandler<{ topic: 'sendReminder'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
+    'DailyMorningReminderJob': CronHandler<{ topic: 'sendMorningReminder'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
+    'SendMorningReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
+    'SendReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
   }
 }
