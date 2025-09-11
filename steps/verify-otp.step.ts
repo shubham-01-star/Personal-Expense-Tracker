@@ -5,6 +5,8 @@ import * as dotenv from 'dotenv'
 import { dbInit } from "../src/bootstrap";
 import nodemailer from 'nodemailer'
 dotenv.config()
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 
 export const config: ApiRouteConfig = {
@@ -37,7 +39,21 @@ export const handler: Handlers["verifyOtp"] = async (req, { logger, emit }) => {
 
   user.isVerified = true;
   user.otp = null;
-  await userRepo.save(user);
+  const savedUser = await userRepo.save(user);
+
+  // Generate JWT token
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    logger.error("JWT_SECRET is not defined in .env");
+    return { status: 500, body: { message: "Server misconfiguration", error: "Missing JWT secret" } };
+  }
+
+  const token = jwt.sign(
+    { userId: savedUser.id, email: savedUser.email },
+    secret,
+    { expiresIn: "1d" }
+  );
+
 
   // Emit Welcome Mail
   (emit as any)?.({
@@ -50,5 +66,13 @@ export const handler: Handlers["verifyOtp"] = async (req, { logger, emit }) => {
   });
   console.log("end er")
 
-  return { status: 200, body: { message: "User verified successfully" } };
+  return {
+    status: 200, body: {
+      message: "User verified successfully",
+      token,
+      user: {
+        savedUser
+      }
+    }
+  };
 };

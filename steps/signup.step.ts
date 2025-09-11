@@ -23,7 +23,6 @@ export const config: ApiRouteConfig = {
 
     responseSchema: {
         200: z.object({
-            token: z.string(),
             user: z.object({
                 id: z.number(),
                 name: z.string(),
@@ -102,7 +101,7 @@ export const handler: Handlers["signup"] = async (req, { logger, emit }) => {
         return {
             status: 200,
             body: {
-                token,
+                message: "OTP Sended Successfully",
                 user: {
                     id: savedUser.id,
                     name: savedUser.name,
