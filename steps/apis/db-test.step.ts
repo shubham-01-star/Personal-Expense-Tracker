@@ -1,5 +1,5 @@
 import { ApiRouteConfig, Handlers } from "motia";
-import { dbInit } from "../src/bootstrap";
+import { dbInit } from "../../src/bootstrap";
 
 export const config: ApiRouteConfig = {
     type: "api",

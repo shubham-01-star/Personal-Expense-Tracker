@@ -1,11 +1,11 @@
 import { ApiRouteConfig, Handlers } from "motia";
 import { date, z } from "zod";
-import { dbInit } from "../src/bootstrap";
-import { Expense } from "../src/models/Expense";
-import { User } from "../src/models/User";
-import { ExpenseCategory } from "../src/enum/ExpenseCategory";
-import { RecurringExpense } from "../src/models/recurring_expense";
-import { CategoryBudget } from "../src/models/CategoryBudget_model"
+import { dbInit } from "../../src/bootstrap";
+import { Expense } from "../../src/models/Expense";
+import { User } from "../../src/models/User";
+import { ExpenseCategory } from "../../src/enum/ExpenseCategory";
+import { RecurringExpense } from "../../src/models/recurring_expense";
+import { CategoryBudget } from "../../src/models/CategoryBudget_model"
 
 export const config: ApiRouteConfig = {
   type: "api",

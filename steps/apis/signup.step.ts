@@ -1,8 +1,8 @@
 import { ApiRouteConfig, Handlers } from "motia";
 import { z } from "zod";
-import { dbInit } from "../src/bootstrap";
-import { User } from "../src/models/User";
-import { generateOTP } from "../src/utils/otp.util"
+import { dbInit } from "../../src/bootstrap";
+import { User } from "../../src/models/User";
+import { generateOTP } from "../../src/utils/otp.util"
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
