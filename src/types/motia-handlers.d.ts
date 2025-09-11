@@ -46,6 +46,32 @@ declare module "motia" {
       }
     >;
 
+    //verifyOtp
+    "verifyOtp": ApiRouteHandler<
+      {
+        email: string;
+        otp: string;
+      },
+      ApiResponse<
+        200 | 400 | 500,
+        { message?: string; error?: string }
+      >,
+      {
+        emits: {
+          "user.signedup": {
+            id: number;
+            name: string;
+            email: string;
+          };
+          "notification": {
+            templateId: string;
+            email: string;
+            templateData: Record<string, any>;
+          };
+        };
+      }
+    >;
+
 
 
     // Login
@@ -241,8 +267,10 @@ declare module "motia" {
       ApiResponse<200 | 400 | 500 | 401, { message?: string; error?: string }>
     >;
 
-    'sendmail': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
+    'SendOtp': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
 
     'DailyEmailCron': CronHandler<never>
+
+    'Notification': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
   }
 }
