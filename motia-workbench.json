@@ -2,21 +2,29 @@
   {
     "id": "expense-tracker",
     "config": {
-      "steps\\sendotp.step.ts": {
-        "x": -241,
-        "y": -127
+      "steps\\crons\\daily-reminder.step.ts": {
+        "x": 495,
+        "y": 19
       },
-      "steps\\notification.step.ts": {
-        "x": 620,
-        "y": -162
+      "steps\\apis\\verify-otp.step.ts": {
+        "x": -594,
+        "y": 1
       },
-      "steps\\signup.step.ts": {
-        "x": 44,
-        "y": -169
+      "steps\\apis\\signup.step.ts": {
+        "x": -195,
+        "y": 200
       },
-      "steps\\verify-otp.step.ts": {
-        "x": 264,
-        "y": -170
+      "steps\\apis\\sendotp.step.ts": {
+        "x": -607,
+        "y": 187
+      },
+      "steps\\apis\\notification.step.ts": {
+        "x": -258,
+        "y": 17
+      },
+      "steps\\crons\\daily-reminder-cron.step.ts": {
+        "x": 46,
+        "y": -14
       }
     }
   }
