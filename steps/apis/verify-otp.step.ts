@@ -1,8 +1,8 @@
 import { collectFlows, ApiRouteConfig, EventConfig, Handlers } from 'motia'
 import { z } from 'zod'
-import { User } from "../src/models/User";
+import { User } from "../../src/models/User";
 import * as dotenv from 'dotenv'
-import { dbInit } from "../src/bootstrap";
+import { dbInit } from "../../src/bootstrap";
 import nodemailer from 'nodemailer'
 dotenv.config()
 import bcrypt from "bcryptjs";
@@ -15,6 +15,7 @@ export const config: ApiRouteConfig = {
   method: "POST",
   path: "/verify-otp",
   flows: ['expense-tracker'],
+  description: 'verify otp',
   bodySchema: z.object({
     email: z.string().email(),
     otp: z.string(),

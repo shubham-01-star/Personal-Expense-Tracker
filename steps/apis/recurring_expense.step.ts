@@ -1,8 +1,8 @@
 import { ApiRouteConfig, Handlers } from "motia";
 import { z } from "zod";
-import { dbInit } from "../src/bootstrap";
-import { RecurringExpense } from "../src/models/recurring_expense";
-import { RecurringAction, RecurringFrequency, RecurringStatus } from "../src/enum/Recurring_enum";
+import { dbInit } from "../../src/bootstrap";
+import { RecurringExpense } from "../../src/models/recurring_expense";
+import { RecurringAction, RecurringFrequency, RecurringStatus } from "../../src/enum/Recurring_enum";
 
 export const config: ApiRouteConfig = {
     type: "api",

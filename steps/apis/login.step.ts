@@ -1,7 +1,7 @@
 import { ApiRouteConfig, Handlers } from "motia";
 import { z } from "zod";
-import { dbInit } from "../src/bootstrap";
-import { User } from "../src/models/User";
+import { dbInit } from "../../src/bootstrap";
+import { User } from "../../src/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 

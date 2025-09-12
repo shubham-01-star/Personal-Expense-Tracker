@@ -1,8 +1,8 @@
 import { ApiRouteConfig, Handlers } from "motia";
 import { z } from "zod";
-import { dbInit } from "../src/bootstrap";
-import { Expense } from "../src/models/Expense";
-import { ExpenseCategory } from "../src/enum/ExpenseCategory";
+import { dbInit } from "../../src/bootstrap";
+import { Expense } from "../../src/models/Expense";
+import { ExpenseCategory } from "../../src/enum/ExpenseCategory";
 import { Between, MoreThanOrEqual, LessThanOrEqual } from "typeorm";
 
 

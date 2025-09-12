@@ -12,6 +12,12 @@ declare module 'motia' {
   }
 
   interface Handlers {
+    'SendMorningReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
+    'MonthlyExpenseReportJob': CronHandler<never>
+    'DailyMorningReminderJob': CronHandler<{ topic: 'sendMorningReminder'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
+    'DailyReminderJob': CronHandler<{ topic: 'sendReminder'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
+    'SendReminder': EventHandler<{ templateId: string; email: string; templateData: Record<string, unknown> }, never>
+    'verifyOtp': ApiRouteHandler<{ email: string; otp: string }, unknown, { topic: 'notification'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
     'signup': ApiRouteHandler<{ name: string; email: string; password: string; monthly_budget?: number }, ApiResponse<200, { user: { id: number; name: string; email: string } }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, { topic: 'send_otp'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
     'monthly-budget-update': ApiRouteHandler<{ userId: number; amount: number; action?: 'POST' | 'GET' }, ApiResponse<200, { message: string; overallBudget: { amount: number } }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, never>
     'category-budget-update': ApiRouteHandler<{ userId: number; category: 'food' | 'travel' | 'transport' | 'entertainment' | 'shopping' | 'bills' | 'other'; limit: number }, ApiResponse<200, { message: string; category: { name: 'food' | 'travel' | 'transport' | 'entertainment' | 'shopping' | 'bills' | 'other'; limit: number; spent: number } }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, never>
@@ -25,6 +31,5 @@ declare module 'motia' {
     'expense-history': ApiRouteHandler<Record<string, unknown>, ApiResponse<200, { expenses: { id: number; date: string; category: 'food' | 'travel' | 'transport' | 'entertainment' | 'shopping' | 'bills' | 'other'; description: unknown; amount: number }[] }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, never>
     'expense-add': ApiRouteHandler<{ userId: number; amount: number; category: string; description?: string; date?: string }, ApiResponse<200, { id: number; amount: number; category: string; description?: string; date: string }> | ApiResponse<400, { message: string }> | ApiResponse<500, { message: string; error: string }>, never>
     'db-test': ApiRouteHandler<Record<string, unknown>, unknown, never>
-    'verifyOtp': ApiRouteHandler<{ email: string; otp: string }, unknown, { topic: 'notification'; data: { templateId: string; email: string; templateData: Record<string, unknown> } }>
   }
 }

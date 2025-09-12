@@ -1,9 +1,9 @@
 import { ApiRouteConfig, Handlers } from "motia";
 import { z } from "zod";
-import { dbInit } from "../src/bootstrap";
-import { Expense } from "../src/models/Expense";
-import { RecurringExpense } from "../src/models/recurring_expense";
-import { RecurringStatus } from "../src/enum/Recurring_enum";
+import { dbInit } from "../../src/bootstrap";
+import { Expense } from "../../src/models/Expense";
+import { RecurringExpense } from "../../src/models/recurring_expense";
+import { RecurringStatus } from "../../src/enum/Recurring_enum";
 import { Between } from "typeorm";
 
 export const config: ApiRouteConfig = {
