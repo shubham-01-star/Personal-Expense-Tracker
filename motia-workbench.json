@@ -22,10 +22,6 @@
         "x": 46,
         "y": -14
       },
-      "steps\\crons\\missed-expense-yesterday.step.ts": {
-        "x": 447,
-        "y": -10
-      },
       "steps\\crons\\send-morning-reminder.step.ts": {
         "x": 467,
         "y": 250
@@ -33,6 +29,14 @@
       "steps\\crons\\daily-evening-reminder.step.ts": {
         "x": 68,
         "y": 260
+      },
+      "steps\\crons\\missed-expense-yesterday-cron.step.ts": {
+        "x": 429,
+        "y": -12
+      },
+      "steps\\crons\\monthly-report-cron.step.ts": {
+        "x": 0,
+        "y": 0
       }
     }
   }
